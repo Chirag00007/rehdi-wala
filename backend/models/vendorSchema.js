@@ -16,16 +16,7 @@ const vendorSchema = new mongoose.Schema({
     unique: [true, "Email already exists"],
     validate: [validator.isEmail, "Please provide a valid email"],
   },
-  // vendorAvatar: {
-  //   public_id: {
-  //     type: String,
-  //     required: true,
-  //   },
-  //   url: {
-  //     required: true,
-  //     type: String,
-  //   },
-  // },
+ 
   vendorPassword: {
     type: String,
     required: true,

@@ -55,12 +55,12 @@ exports.loginUser = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-};
+};  
 
 //Register User
 exports.registerUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password , longitude , latitude } = req.body;
  
     const preUser = await User.findOne({ email });
     const preVendor = await Vendor.findOne({email})
@@ -74,7 +74,11 @@ exports.registerUser = async (req, res) => {
     const user = await User.create({
       name,
       email,
-      password
+      password,
+      location: {
+        type: "Point",
+        coordinates: [longitude, latitude],
+      },
     });
 
     const token = await Token.create({
@@ -137,7 +141,10 @@ exports.loadUser = async (req, res, next) => {
       res.status(400).json({ message: "User not found" });
     }
 
-    res.status(200).json({ success: true, user });
+    const { _id, name, email, location } = user;
+    res
+      .status(200)
+      .json({ success: true, user: { _id, name, email, location } });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

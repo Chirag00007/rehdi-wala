@@ -26,7 +26,20 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  location: {
+    type: {
+      type: String,
+      enum: ["Point"],
+      required: true,
+    },
+    coordinates: {
+      type: [Number],
+      required: true,
+    },
+  },
 });
+userSchema.index({ location: "2dsphere" });
+
 
 //pre save function create krna jisnal ! Password te hash lgg jayegi, and (if) is used agr password modiefied nhi hai then hash lgani....
 userSchema.pre("save", async function (next) {
