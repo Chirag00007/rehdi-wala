@@ -44,17 +44,7 @@ const vendorSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  location: {
-    type: {
-      type: String,
-      enum: ["Point"],
-      required: true,
-    },
-    coordinates: {
-      type: [Number],
-      required: true,
-    },
-  },
+
 });
 
 vendorSchema.pre("save", async function (next) {

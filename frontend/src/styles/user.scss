@@ -1,0 +1,55 @@
+.login_page {
+ @include mainWindow();
+}
+.log_img {
+ background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../Images/login.jpg');
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+ width: 100%;
+ min-height: 100vh;
+}
+.login_form {
+ width: 400px;
+ display: flex;
+ align-items: center;
+ justify-content: flex-start;
+ flex-direction: column;
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+@include blurNav();
+h1 {
+ font-size: 20px;
+ color: $yellow;
+ margin: 20px auto;
+}
+   input {
+     width: 90%;
+     background-color: transparent;
+     font-size: 10px;
+     background-color: rgba(244, 238, 238, 0.178);
+     margin: 20px auto;
+     padding: 10px;
+     outline: none;
+     border: none;
+     border-radius: 15px; 
+    };
+    button {
+     width: 90%;
+     background-color: $yellow;
+     font-size: 12px;
+     padding: 10px;
+     border-radius: 15px;
+     color: white;
+     margin: 20px auto;
+    }
+}
+
+@media (max-width : 500px) {
+ .login_form {
+  width: 90%;
+ }
+}
+
